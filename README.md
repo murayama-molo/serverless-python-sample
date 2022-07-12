@@ -40,7 +40,6 @@ https://zenn.dev/mid480/articles/serverless-framework-used-by-windows-
 ## hosting
 
 ```bash
-$ serverless plugin install -n serverless-s3-deploy
 $ npm install serverless-s3-sync
 ```
 
@@ -80,24 +79,11 @@ $ serverless deploy --aws-profile ${自分の設定したプロファイル名}
 
 ### デプロイできていることを確認
 
-https://serverless-python-sample-bucket.s3.ap-northeast-1.amazonaws.com/index.html
+# Remove
 
-# Note
+お掃除
+作ったリソースを全部削除
 
-注意点などがあれば書く
-
-# Author
-
-作成情報を列挙する
-
-- 作成者
-- 所属
-- E-mail
-
-# License
-
-ライセンスを明示する
-
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
-
-社内向けなら社外秘であることを明示してる
+```bash
+$ serverless remove --aws-profile ${自分の設定したプロファイル名}
+```
