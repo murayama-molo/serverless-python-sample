@@ -15,6 +15,10 @@ custom:
     - bucketName: serverless-python-sample-bucket
       localDir: public
       acl: private
+  OriginPath:
+    dev: "/dev"
+    stg: "/stg"
+    prd: "/"
 
 resources:
   Resources:
@@ -55,7 +59,7 @@ resources:
     SampleHostingCloudFront:
       DependsOn:
         - SampleHostingS3Policy
-        - ApiGatewayRestApi
+        - ApiGatewayMethodApiHelloGet
       Type: AWS::CloudFront::Distribution
       Properties:
         DistributionConfig:
@@ -76,22 +80,20 @@ resources:
             - Id: APIGateway
               DomainName:
                 Fn::Join:
-                  - "/"
+                  - "."
                   - - Ref: ApiGatewayRestApi
-                    - .execute-api.s3.${self:provider.region}.amazonaws.com
+                    - execute-api.${self:provider.region}.amazonaws.com
+              OriginPath: ${self:custom.OriginPath.${sls:stage}}
               CustomOriginConfig:
                 HTTPPort: 80
                 HTTPSPort: 443
                 OriginProtocolPolicy: "http-only"
+                OriginSSLProtocols:
+                  - "TLSv1.2"
           DefaultCacheBehavior:
             AllowedMethods:
               - HEAD
               - GET
-              - OPTIONS
-              - PUT
-              - POST
-              - PATCH
-              - DELETE
             CachedMethods:
               - HEAD
               - GET
@@ -110,6 +112,25 @@ resources:
           #     ErrorCachingMinTTL: 30
           #     ResponsePagePath: /
           #     ResponseCode: 200
+          CacheBehaviors:
+            - PathPattern: "/api/*"
+              AllowedMethods:
+                - HEAD
+                - GET
+                - OPTIONS
+                - PUT
+                - POST
+                - PATCH
+                - DELETE
+              Compress: true
+              DefaultTTL: 30
+              MaxTTL: 120
+              MinTTL: 30
+              ForwardedValues:
+                QueryString: true
+              SmoothStreaming: false
+              TargetOriginId: APIGateway
+              ViewerProtocolPolicy: https-only
 
   Outputs:
     ApiGatewayRestApi:
