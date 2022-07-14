@@ -8,17 +8,38 @@ serverless framework を通して AWS 環境上に API Gateway, Lambda(python), 
 
 以下の環境で構築しました
 
+## aws
+
+```bash
+$ aws --version
+aws-cli/1.25.29 Python/3.8.10 Windows/10 exec-env/EC2 botocore/1.27.29
+```
+
+## chocolatey
+
+```bash
+choco -v
+1.1.0
+```
+
 ## node.js
 
 ```bash
-$ node --version
-v14.18.0
+$ node -v
+v18.6.0
+```
+
+## npm
+
+```bash
+$ npm -v
+8.13.2
 ```
 
 ## serverless framework
 
 ```bash
-$ serverless --version
+$ serverless -v
 Framework Core: 3.20.0 (standalone)
 Plugin: 6.2.2
 SDK: 4.3.2
