@@ -2,6 +2,8 @@
 
 serverless framework を通して AWS 環境上に API Gateway, Lambda(python), CloudFront, S3 を作ってみるサンプル
 
+<img width="881" alt="スクリーンショット 2022-07-14 16 52 36" src="https://user-images.githubusercontent.com/21980958/178931198-026c516a-f0bc-4033-970d-97ff0975c2e0.png">
+
 # Requirement
 
 以下の環境で構築しました
