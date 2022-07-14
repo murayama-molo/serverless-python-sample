@@ -17,10 +17,9 @@ v14.18.0
 
 ```bash
 $ serverless --version
-Framework Core: 2.53.1 (standalone)
-Plugin: 5.4.3
-SDK: 4.2.6
-Components: 3.14.2
+Framework Core: 3.20.0 (standalone)
+Plugin: 6.2.2
+SDK: 4.3.2
 ```
 
 # Installation
