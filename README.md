@@ -25,31 +25,68 @@ Components: 3.14.2
 
 # Installation
 
-## node.js
+## chocolatey
 
-windows の場合
-https://otona-life.com/2022/02/09/103500/
+パッケージマネージャー
+
+### chocolatey をインストール
+
+https://chocolatey.org/install#individual
+
+例:
+
+```bash
+Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
+
+## AWS CLI
+
+### AWS CLI をインストール
+
+https://docs.aws.amazon.com/ja_jp/cli/v1/userguide/install-windows.html#install-msi-on-windows
+
+### IAM の設定
+
+```bash
+$ aws configure
+AWS Access Key ID [None]: YOUR_ACCESS_KEY_ID
+AWS Secret Access Key [None]: YOUR_SECRET_ACCESS_KEY
+Default region name [None]: ap-northeast-1
+Default output format [None]: json
+```
 
 ## serverless framework
 
-windows の場合
-https://zenn.dev/mid480/articles/serverless-framework-used-by-windows-
-
-## serverless-python-requirements
-
-## hosting
-
 ```bash
-$ npm install serverless-s3-sync
+$ choco install serverless
 ```
 
-## lambda
+## node.js
+
+```bash
+$ choco install nodejs
+```
+
+## npm install
+
+node.js 関連パッケージをインストール
+
+```bash
+$ npm install
+```
+
+まだ使ってない
+
+````
+## serverless-python-requirements
 
 pip インストールが必要な AWS Lambda の Python スクリプトを Serverless Framework で間単位デプロイできるプラグイン
 
 ```bash
 $ serverless plugin install -n serverless-python-requirements
-```
+````
+
+````
 
 # Test
 
@@ -57,32 +94,34 @@ $ serverless plugin install -n serverless-python-requirements
 
 ```bash
 $ python -m unittest discover
+````
+
+# deploy
+
+```bash
+$ serverless deploy
 ```
 
-# Usage
-
-## 自分のローカル PC の証明書を設定(AWS IAM)
-
-## deploy
-
-### hosting
+※aws の認証情報をプロファイルで分けている場合は
 
 ```bash
 $ serverless deploy --aws-profile ${自分の設定したプロファイル名}
 ```
 
-### lambda
+# Check
 
-```bash
-$ serverless deploy --aws-profile ${自分の設定したプロファイル名}
-```
-
-### デプロイできていることを確認
+Cloud Fron の URL をブラウザで実行
 
 # Remove
 
 お掃除
 作ったリソースを全部削除
+
+```bash
+$ serverless remove
+```
+
+※aws の認証情報をプロファイルで分けている場合は
 
 ```bash
 $ serverless remove --aws-profile ${自分の設定したプロファイル名}
