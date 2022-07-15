@@ -94,8 +94,10 @@ $ choco install nodejs
 node.js 関連パッケージをインストール
 
 ```bash
-$ npm install
+$ npm ci
 ```
+
+※npm install ですと動かない場合があります
 
 まだ使ってない
 
