@@ -153,4 +153,5 @@ functions:
           integration: lambda
 
 plugins:
+  - serverless-offline
   - serverless-s3-sync
