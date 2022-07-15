@@ -118,6 +118,18 @@ $ serverless plugin install -n serverless-python-requirements
 $ python -m unittest discover
 ````
 
+# Local Debug
+
+## serverless offline を起動
+
+```bash
+$ serverless offline
+```
+
+## 確認
+
+http://localhost:3000/dev/api/hello
+
 # deploy
 
 ```bash
