@@ -140,16 +140,27 @@ resources:
         Name: ${self:service}-restApiId-${self:provider.stage}
 
 functions:
-  hello:
-    handler: handler.hello
+  getHello:
+    handler: handler.getHello
     name: hello
-    description: テストAPI
+    description: GET テストAPI
     timeout: 15
     memorySize: 128
     events:
       - http:
           path: "api/hello"
           method: get
+          integration: lambda
+  postHello:
+    handler: handler.postHello
+    name: hello
+    description: POST テストAPI
+    timeout: 15
+    memorySize: 128
+    events:
+      - http:
+          path: "api/hello"
+          method: post
           integration: lambda
 
 plugins:
