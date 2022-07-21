@@ -130,7 +130,19 @@ $ serverless offline
 
 ## 確認
 
-http://localhost:3000/dev/api/hello
+postman や curl 等で確認してください
+
+```
+GET http://localhost:3000/dev/api/hello?test=get
+```
+
+```
+POST http://localhost:3000/dev/api/hello
+Content-Type: "application/json"
+{
+    "test": "post"
+}
+```
 
 # deploy
 
